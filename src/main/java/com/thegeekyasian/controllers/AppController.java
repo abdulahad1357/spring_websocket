@@ -17,8 +17,7 @@ import java.io.IOException;
 @RequestMapping(value = "/")
 public class AppController {
     @RequestMapping(value = "/broadcast")
-    public ResponseEntity<String> testSocket() throws IOException, EncodeException {
-        String message="hello world";
+    public ResponseEntity<String> testSocket(@RequestParam("message") String message) throws IOException, EncodeException {
         Socket.broadcast(message);
         String successMessage = String.format("Operation completed! " +
                 "Data broadcast to %s listeners", Socket.listeners.size());
